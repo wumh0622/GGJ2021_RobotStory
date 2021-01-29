@@ -374,9 +374,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8047622359114817569}
-  - component: {fileID: 9133931113213330915}
   - component: {fileID: 6733950774037510859}
   - component: {fileID: 1923470743483475215}
+  - component: {fileID: 9133931113213330915}
+  - component: {fileID: 5613524701338025780}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -403,25 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9133931113213330915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8047622359114817594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c518d102dcd51459b01502325698a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSpeed: 5
-  body: {fileID: 1501119092295501588}
-  rightSensor: {fileID: 3244990709999033042}
-  leftSensor: {fileID: 8238025743110423986}
-  topSensor: {fileID: 1701618919533323744}
-  downSensor: {fileID: 2985968802745515158}
-  sensorRadius: 0.02
 --- !u!50 &6733950774037510859
 Rigidbody2D:
   serializedVersion: 4
@@ -459,3 +441,40 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &9133931113213330915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047622359114817594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c518d102dcd51459b01502325698a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSpeed: 5
+  body: {fileID: 1501119092295501588}
+  rightSensor: {fileID: 3244990709999033042}
+  leftSensor: {fileID: 8238025743110423986}
+  topSensor: {fileID: 1701618919533323744}
+  downSensor: {fileID: 2985968802745515158}
+  sensorRadius: 0.02
+--- !u!114 &5613524701338025780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047622359114817594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aadf6419cc0ade488a37e242c466db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_oBulletObject: {fileID: 6892052784952170660, guid: d1fd8d0079ef50d4790e017b573b841e, type: 3}
+  m_arrBulletSpawnPoints:
+  - {fileID: 263713812844986241}
+  - {fileID: 6167324715836670666}
+  m_strAttackInputKey: Fire1
+  m_fBulletDelayTime: 0.2
