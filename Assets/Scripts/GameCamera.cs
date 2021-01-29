@@ -7,6 +7,13 @@ public class GameCamera : MonoBehaviour
     [Range(0.01f, 1f)]
     private float moveTime = 0.2f;
 
+    private bool isMoving = false;
+
+    public bool IsMoving()
+    {
+        return isMoving;
+    }
+
     public void MoveTo(Vector2 position)
     {
         StopAllCoroutines();
@@ -15,6 +22,7 @@ public class GameCamera : MonoBehaviour
 
     private IEnumerator MoveProcess(Vector2 position)
     {
+        isMoving = true;
         Vector3 targetPosition = new Vector3(position.x, position.y, transform.position.z);
 
         float t = 0f;
@@ -26,5 +34,6 @@ public class GameCamera : MonoBehaviour
             transform.position = Vector3.Slerp(originPosition, targetPosition, t);
             yield return null;
         }
+        isMoving = false;
     }
 }
