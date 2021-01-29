@@ -220,9 +220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTime: 0.2
---- !u!114 &648705497 stripped
+--- !u!114 &868301262 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8047622359114817597, guid: 0e75f018c90d6cc46a9ed67861f6b5db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9133931113213330915, guid: 0e75f018c90d6cc46a9ed67861f6b5db, type: 3}
   m_PrefabInstance: {fileID: 8047622358718113137}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 375706431}
-  player: {fileID: 648705497}
+  player: {fileID: 868301262}
   rooms:
   - {fileID: 378924184649548226}
   - {fileID: 1372973624}
