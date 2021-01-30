@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 6733950774037510859}
   - component: {fileID: 1923470743483475215}
   - component: {fileID: 4708737200982946240}
+  - component: {fileID: 4367929177518684147}
   - component: {fileID: 9133931113213330915}
   - component: {fileID: 5613524701338025780}
   m_Layer: 8
@@ -455,11 +456,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 9133931113213330915}
+  input: {fileID: 4367929177518684147}
   defaultSpeed: 5
   speedPercentages:
   - 0.33
   - 0.66
   - 1
+  inputDelayFrames: 320000001900000000000000
+--- !u!114 &4367929177518684147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047622359114817594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c61c02a74d201b4095b014d8debe449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputDelayFrame: 0
+  movement: {fileID: 9133931113213330915}
 --- !u!114 &9133931113213330915
 MonoBehaviour:
   m_ObjectHideFlags: 0

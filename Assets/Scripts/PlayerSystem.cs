@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerSystem : MonoBehaviour
 {
+    public enum SystemId { MOVEMENT, INPUT }
+
     [SerializeField]
     private PlayerMovement movement = null;
+    [SerializeField]
+    private PlayerInput input = null;
 
     [Header("Default Values")]
     [SerializeField]
@@ -13,14 +17,17 @@ public class PlayerSystem : MonoBehaviour
     [SerializeField]
     [Tooltip("行動速度(%)")]
     private float[] speedPercentages = new float[0];
-
-    public enum SystemId { MOVEMENT }
+    [SerializeField]
+    [Tooltip("輸入延遲(frame)")]
+    private int[] inputDelayFrames = new int[0];
 
     private readonly System.Random random = new System.Random();
     private readonly List<int> systemLevels = new List<int>();
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         int systemIdLength = Enum.GetValues(typeof(SystemId)).Length;
         for (int i = 0; i < systemIdLength; i++)
         {
@@ -32,6 +39,9 @@ public class PlayerSystem : MonoBehaviour
                     break;
                 case SystemId.MOVEMENT:
                     systemLevels.Add(speedPercentages.Length - 1);
+                    break;
+                case SystemId.INPUT:
+                    systemLevels.Add(inputDelayFrames.Length - 1);
                     break;
             }
         }
@@ -62,6 +72,11 @@ public class PlayerSystem : MonoBehaviour
                     break;
                 case SystemId.MOVEMENT:
                     movement.Speed = defaultSpeed * speedPercentages[systemLevel];
+                    Debug.LogFormat("行動速度 => {0}", movement.Speed);
+                    break;
+                case SystemId.INPUT:
+                    input.InputDelayFrame = inputDelayFrames[systemLevel];
+                    Debug.LogFormat("輸入延遲 => {0}", input.InputDelayFrame);
                     break;
             }
         }
