@@ -739,6 +739,7 @@ MonoBehaviour:
   movement: {fileID: 9133931113213330915}
   input: {fileID: 4367929177518684147}
   vision: {fileID: 3334369564776146601}
+  systemDamageRate: 60
   defaultSpeed: 5
   speedPercentages:
   - 0.33
