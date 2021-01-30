@@ -14,7 +14,9 @@ public class Bullet : MonoBehaviour
 
     public float m_fSpeed = 10.0f;
 
-    EBulletOwnerType m_eOwner;
+    EBulletOwnerType m_eOwnerType;
+
+    GameObject m_oOwner;
 
     float m_fDamage;
 
@@ -35,9 +37,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetOwner(EBulletOwnerType eType)
+    public void SetOwner(GameObject oOwner, EBulletOwnerType eType)
     {
-        m_eOwner = eType;
+        m_oOwner = oOwner;
+        m_eOwnerType = eType;
     }
 
     public void SetDamage(float fDamage)
@@ -48,7 +51,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         print(collision.gameObject.name);
-        if (m_eOwner == EBulletOwnerType.m_ePlayer)
+        if (m_eOwnerType == EBulletOwnerType.m_ePlayer)
         {
             if (collision.gameObject == GameManager.Instance.GetPlayer().gameObject)
             {
@@ -62,9 +65,9 @@ public class Bullet : MonoBehaviour
                 oHitTarget.TakeDamage(m_fDamage);
             }
         }
-        else if(m_eOwner == EBulletOwnerType.m_eEnemy)
+        else if(m_eOwnerType == EBulletOwnerType.m_eEnemy)
         {
-            if(collision.gameObject == gameObject)
+            if(collision.gameObject == m_oOwner)
             {
                 return;
             }

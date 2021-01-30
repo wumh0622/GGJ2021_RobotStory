@@ -68,12 +68,10 @@ public class Enemy : MonoBehaviour
 
             if (Mathf.Abs(m_fVelocityForward) > Mathf.Abs(m_fAttackAngleRange))
             {
-                print(m_fVelocityForward);
                 Attack(false);
             }
             else
             {
-                print(m_fVelocityForward);
                 Attack(true);
             }
         }

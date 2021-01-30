@@ -61,11 +61,11 @@ public class BarrageSystem : MonoBehaviour
                         oBullet.transform.rotation = m_arrBulletSpawnPoints[nIdx].rotation;
                         if(m_bIsPlayerInput)
                         {
-                            oBullet.SetOwner(EBulletOwnerType.m_ePlayer);
+                            oBullet.SetOwner(gameObject, EBulletOwnerType.m_ePlayer);
                         }
                         else
                         {
-                            oBullet.SetOwner(EBulletOwnerType.m_eEnemy);
+                            oBullet.SetOwner(gameObject, EBulletOwnerType.m_eEnemy);
                         }
 
                         oBullet.SetDamage(m_fDamage);
