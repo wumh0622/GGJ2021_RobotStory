@@ -74,6 +74,7 @@ public class Bullet : MonoBehaviour
             else if (collision.gameObject == GameManager.Instance.GetPlayer().gameObject)
             {
                 //Damage Player
+                GameManager.Instance.DamagePlayer();
                 return;
             }
         }

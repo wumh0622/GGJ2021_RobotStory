@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DamagePlayer()
+    {
+        player.Damaged();
+    }
+
     public void ChangeRoomFrom(RoomDoor door)
     {
         // 房間被鎖住了，不切換
