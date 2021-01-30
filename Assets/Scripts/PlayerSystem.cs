@@ -26,6 +26,10 @@ public class PlayerSystem : MonoBehaviour
     private readonly System.Random random = new System.Random();
     private readonly List<int> systemLevels = new List<int>();
 
+    //For Debug
+    [SerializeField]
+    private bool m_bNoDamage = false;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -75,11 +79,27 @@ public class PlayerSystem : MonoBehaviour
     public void Damaged()
     {
         Debug.Log("受傷了");
+        if(m_bNoDamage)
+        {
+            return;
+        }
         int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
         if (systemLevels[indexOfSystemId] > 0)
         {
             systemLevels[indexOfSystemId]--;
         }
+        RefreshSystemValues();
+    }
+
+    public void Heal()
+    {
+        Debug.Log("補血");
+
+        for (int nIdx = 0; nIdx < systemLevels.Count; nIdx++)
+        {
+            systemLevels[nIdx]++;
+        }
+
         RefreshSystemValues();
     }
 
@@ -94,14 +114,32 @@ public class PlayerSystem : MonoBehaviour
                 default:
                     break;
                 case SystemId.MOVEMENT:
+                    if(systemLevel > speedPercentages.Length-1)
+                    {
+                        systemLevel = speedPercentages.Length - 1;
+                        systemLevels[(int)systemId] = systemLevel;
+                    }
+
                     movement.Speed = defaultSpeed * speedPercentages[systemLevel];
                     Debug.LogFormat("行動速度 => {0}", movement.Speed);
                     break;
                 case SystemId.INPUT:
+                    if (systemLevel > inputDelayFrames.Length - 1)
+                    {
+                        systemLevel = inputDelayFrames.Length - 1;
+                        systemLevels[(int)systemId] = systemLevel;
+                    }
+
                     input.InputDelayFrame = inputDelayFrames[systemLevel];
                     Debug.LogFormat("輸入延遲 => {0}", input.InputDelayFrame);
                     break;
                 case SystemId.VISION:
+                    if (systemLevel > vision.GetVisionCount() - 1)
+                    {
+                        systemLevel = vision.GetVisionCount() - 1;
+                        systemLevels[(int)systemId] = systemLevel;
+                    }
+
                     vision.SetVisionMode(systemLevel);
                     Debug.LogFormat("顯示範圍 => Level {0}", vision.GetVisionMode());
                     break;

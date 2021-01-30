@@ -7,18 +7,31 @@ public class Room : MonoBehaviour
     public RoomDoor DoorRight;
     public RoomDoor DoorLeft;
 
-    Enemy[] m_arrAllEnemyInRoom;
+    List<IRoomObject> m_listAllObjectInRoom = new List<IRoomObject>();
 
     private void Awake()
     {
-        m_arrAllEnemyInRoom = GetComponentsInChildren<Enemy>();
+        Enemy[] arrAllEnemy = GetComponentsInChildren<Enemy>();
+        EnemySpawner[] arrAllSpawner = GetComponentsInChildren<EnemySpawner>();
+
+        for (int nIdx = 0; nIdx < arrAllEnemy.Length; nIdx++)
+        {
+            var oObject = arrAllEnemy[nIdx] as IRoomObject;
+            m_listAllObjectInRoom.Add(oObject);
+        }
+
+        for (int nIdx = 0; nIdx < arrAllSpawner.Length; nIdx++)
+        {
+            var oObject = arrAllSpawner[nIdx] as IRoomObject;
+            m_listAllObjectInRoom.Add(oObject);
+        }
     }
 
     public void RoomStart()
     {
-        foreach (var Enemy in m_arrAllEnemyInRoom)
+        foreach (var oObject in m_listAllObjectInRoom)
         {
-            Enemy.ActivateEnemy(true);
+            oObject.ActivateObject(true);
         }
     }
 }

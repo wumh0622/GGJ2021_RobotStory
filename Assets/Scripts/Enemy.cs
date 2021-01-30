@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BarrageSystem))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour , IRoomObject
 {
     public float m_fMaxHp = 100.0f;
 
@@ -19,13 +19,13 @@ public class Enemy : MonoBehaviour
 
     float m_fHP = 100.0f;
 
-    bool m_bActivateAI = false;
-
     GameObject m_oPlayer;
 
     Rigidbody2D m_oRB2D;
 
     BarrageSystem m_oBarrageSystem;
+
+    public bool m_bActivate { get ; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_bActivateAI)
+        if(m_bActivate)
         {
             Vector2 forward = transform.up * -1;
             Vector2 toOther = (m_oPlayer.transform.position - transform.position).normalized;
@@ -78,11 +78,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ActivateEnemy(bool bActivate)
-    {
-        m_bActivateAI = bActivate;
-    }
-
     void Attack(bool bAttack)
     {
         m_oBarrageSystem.AIShoot(bAttack);
@@ -95,5 +90,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ActivateObject(bool bActivate)
+    {
+        m_bActivate = bActivate;
     }
 }
