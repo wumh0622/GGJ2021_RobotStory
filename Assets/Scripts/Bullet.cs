@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     EBulletOwnerType m_eOwner;
 
+    float m_fDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +40,43 @@ public class Bullet : MonoBehaviour
         m_eOwner = eType;
     }
 
+    public void SetDamage(float fDamage)
+    {
+        m_fDamage = fDamage;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
+        print(collision.gameObject.name);
+        if (m_eOwner == EBulletOwnerType.m_ePlayer)
+        {
+            if (collision.gameObject == GameManager.Instance.GetPlayer().gameObject)
+            {
+                return;
+            }
+
+            Enemy oHitTarget = null;
+            oHitTarget = collision.gameObject.GetComponent<Enemy>();
+            if (oHitTarget != null)
+            {
+                oHitTarget.TakeDamage(m_fDamage);
+            }
+        }
+        else if(m_eOwner == EBulletOwnerType.m_eEnemy)
+        {
+            if(collision.gameObject == gameObject)
+            {
+                return;
+            }
+            else if (collision.gameObject == GameManager.Instance.GetPlayer().gameObject)
+            {
+                //Damage Player
+                return;
+            }
+        }
+
+
+
         DestoryBullet();
     }
 }

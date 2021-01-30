@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     [Range(0,1)]
     public float m_fAttackAngleRange = 0.2f;
 
+    public float m_fStopDistance = 5.0f;
+
     float m_fHP = 100.0f;
 
     bool m_bActivateAI = false;
@@ -40,7 +42,7 @@ public class Enemy : MonoBehaviour
         if(m_bActivateAI)
         {
             Vector2 forward = transform.up * -1;
-            Vector2 toOther = m_oPlayer.transform.position - transform.position;
+            Vector2 toOther = (m_oPlayer.transform.position - transform.position).normalized;
 
             float m_fVelocityForward = Vector2.Dot(forward, toOther);
 
@@ -50,26 +52,28 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                m_oRB2D.angularVelocity = 0.0f;
+               // m_oRB2D.angularVelocity = 0.0f;
             }
 
             float fDistance = Vector3.Distance(m_oPlayer.transform.position, transform.position);
-            if(fDistance > 4.0f)
+            if(fDistance > m_fStopDistance)
             {
                 m_oRB2D.AddForce(transform.right * m_fSpeed);
             }
             else
             {
-                m_oRB2D.velocity = Vector3.zero;
+                //m_oRB2D.velocity = Vector3.zero;
             }
 
 
             if (Mathf.Abs(m_fVelocityForward) > Mathf.Abs(m_fAttackAngleRange))
             {
+                print(m_fVelocityForward);
                 Attack(false);
             }
             else
             {
+                print(m_fVelocityForward);
                 Attack(true);
             }
         }
@@ -83,5 +87,14 @@ public class Enemy : MonoBehaviour
     void Attack(bool bAttack)
     {
         m_oBarrageSystem.AIShoot(bAttack);
+    }
+
+    public void TakeDamage(float fDamage)
+    {
+        m_fHP -= fDamage;
+        if(m_fHP <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -460,9 +460,6 @@ MonoBehaviour:
   - 0.33
   - 0.66
   - 1
-  Health: 0
-  VisionLevel: 0
-  SpeedLevel: 0
 --- !u!114 &9133931113213330915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,5 +496,6 @@ MonoBehaviour:
   - {fileID: 263713812844986241}
   - {fileID: 6167324715836670666}
   m_strAttackInputKey: Fire1
-  m_fBulletDelayTime: 0.2
+  m_fBulletDelayTime: 0.05
+  m_fDamage: 20
   m_bIsPlayerInput: 1

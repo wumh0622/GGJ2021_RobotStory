@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5446379215599156597}
   - component: {fileID: 3141874699764041442}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,9 +181,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 30
+  m_Mass: 3
+  m_LinearDrag: 0.1
+  m_AngularDrag: 20
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -203,9 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fMaxHp: 100
-  m_fSpeed: 1
-  m_fRotSpeed: 1
+  m_fSpeed: 5
+  m_fRotSpeed: 10
   m_fAttackAngleRange: 0.4
+  m_fStopDistance: 5
 --- !u!58 &5446379215599156597
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -239,4 +240,5 @@ MonoBehaviour:
   - {fileID: 5446379214414329844}
   m_strAttackInputKey: Fire1
   m_fBulletDelayTime: 0.5
+  m_fDamage: 1
   m_bIsPlayerInput: 0

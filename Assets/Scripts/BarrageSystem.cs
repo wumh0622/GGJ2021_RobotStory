@@ -12,6 +12,8 @@ public class BarrageSystem : MonoBehaviour
 
     public float m_fBulletDelayTime = 0.5f;
 
+    public float m_fDamage = 1.0f;
+
     public bool m_bIsPlayerInput = false;
 
     bool m_bActivate = false;
@@ -65,6 +67,8 @@ public class BarrageSystem : MonoBehaviour
                         {
                             oBullet.SetOwner(EBulletOwnerType.m_eEnemy);
                         }
+
+                        oBullet.SetDamage(m_fDamage);
                     }
                     m_fFireTimer = 0.0f;
                 }
