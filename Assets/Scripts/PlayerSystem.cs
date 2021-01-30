@@ -96,9 +96,33 @@ public class PlayerSystem : MonoBehaviour
     {
         Debug.Log("補血");
 
-        for (int nIdx = 0; nIdx < systemLevels.Count; nIdx++)
+        int systemIdLength = Enum.GetValues(typeof(SystemId)).Length;
+        for (int i = 0; i < systemIdLength; i++)
         {
-            systemLevels[nIdx]++;
+            SystemId systemId = (SystemId)i;
+            switch (systemId)
+            {
+                default:
+                    break;
+                case SystemId.MOVEMENT:
+                    if (systemLevels[i] < speedPercentages.Length - 1)
+                    {
+                        systemLevels[i]++;
+                    }
+                    break;
+                case SystemId.INPUT:
+                    if (systemLevels[i] < inputDelayFrames.Length - 1)
+                    {
+                        systemLevels[i]++;
+                    }
+                    break;
+                case SystemId.VISION:
+                    if (systemLevels[i] < vision.GetVisionCount() - 1)
+                    {
+                        systemLevels[i]++;
+                    }
+                    break;
+            }
         }
 
         RefreshSystemValues();
@@ -115,7 +139,7 @@ public class PlayerSystem : MonoBehaviour
                 default:
                     break;
                 case SystemId.MOVEMENT:
-                    if(systemLevel > speedPercentages.Length-1)
+                    if (systemLevel > speedPercentages.Length - 1)
                     {
                         systemLevel = speedPercentages.Length - 1;
                         systemLevels[(int)systemId] = systemLevel;
