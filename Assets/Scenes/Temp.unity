@@ -460,14 +460,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 608091869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Script: {fileID: 11500000, guid: 77a13de2b35c0de4cade9723ca86b39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  player: {fileID: 868301267}
+  normal: {fileID: 2071862537}
+  damaged: {fileID: 2117018650}
+  switchThreshold: 3
 --- !u!114 &608091871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +998,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b7ac0e43a5e354281352e2a49d72c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2071862537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9150061957508648550, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+  m_PrefabInstance: {fileID: 1620788190841337693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2117018650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1518072583507897243, guid: 4f7df06ae8e600b42b36d8b981019905, type: 3}
+  m_PrefabInstance: {fileID: 1237339424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141537768
 PrefabInstance:
   m_ObjectHideFlags: 0

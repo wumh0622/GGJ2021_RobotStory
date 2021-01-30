@@ -61,6 +61,17 @@ public class PlayerSystem : MonoBehaviour
         RefreshSystemValues();
     }
 
+    public int GetRemainSystemLevel()
+    {
+        int total = 0;
+        for (int i = 0; i < systemLevels.Count; i++)
+        {
+            total += systemLevels[i];
+        }
+
+        return total;
+    }
+
     public bool IsAllSystemBroken()
     {
         int total = 0;
