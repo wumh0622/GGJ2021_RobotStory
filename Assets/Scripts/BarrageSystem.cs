@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class BarrageSystem : MonoBehaviour
 {
-    public GameObject m_oBulletObject;
+    public Bullet m_oBulletObject;
 
     public Transform[] m_arrBulletSpawnPoints;
 
-    public string m_strAttackInputKey;
+    public string m_strAttackInputKey = "Fire1";
 
     public float m_fBulletDelayTime = 0.5f;
+
+    public bool m_bIsPlayerInput = false;
 
     bool m_bActivate = false;
 
     float m_fFireTimer = 0.0f;
+
+    bool m_bAIShoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,25 +32,54 @@ public class BarrageSystem : MonoBehaviour
     {
         if(m_bActivate)
         {
-            if(Input.GetButton(m_strAttackInputKey))
+            bool bShoot = false;
+            if(m_bIsPlayerInput)
+            {
+                if (Input.GetButton(m_strAttackInputKey))
+                {
+                    bShoot = true;
+                }
+            }
+            else
+            {
+                if(m_bAIShoot)
+                {
+                    bShoot = true;
+                }
+            }
+
+            if(bShoot)
             {
                 if (m_fFireTimer >= m_fBulletDelayTime)
                 {
                     for (int nIdx = 0; nIdx < m_arrBulletSpawnPoints.Length; nIdx++)
                     {
-                        GameObject oBullet = Instantiate(m_oBulletObject);
+                        Bullet oBullet = Instantiate(m_oBulletObject);
                         oBullet.transform.position = m_arrBulletSpawnPoints[nIdx].position;
                         oBullet.transform.rotation = m_arrBulletSpawnPoints[nIdx].rotation;
+                        if(m_bIsPlayerInput)
+                        {
+                            oBullet.SetOwner(EBulletOwnerType.m_ePlayer);
+                        }
+                        else
+                        {
+                            oBullet.SetOwner(EBulletOwnerType.m_eEnemy);
+                        }
                     }
                     m_fFireTimer = 0.0f;
                 }
                 m_fFireTimer += Time.deltaTime;
             }
-            else if(Input.GetButtonUp(m_strAttackInputKey))
+            else
             {
                 m_fFireTimer = m_fBulletDelayTime;
             }
         }
+    }
+
+    public void AIShoot(bool bShoot)
+    {
+        m_bAIShoot = bShoot;
     }
 
     void ActivateSystem(bool bActivate)

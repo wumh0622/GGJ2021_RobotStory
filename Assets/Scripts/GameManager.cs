@@ -57,4 +57,9 @@ public class GameManager : MonoBehaviour
         // 然後切換攝影機到下一個房間的位置
         gameCamera.MoveTo(door.NextDoor.BelongRoom.transform.position);
     }
+
+    public Player GetPlayer()
+    {
+        return player;
+    }
 }

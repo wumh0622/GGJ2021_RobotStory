@@ -472,9 +472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aadf6419cc0ade488a37e242c466db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oBulletObject: {fileID: 6892052784952170660, guid: d1fd8d0079ef50d4790e017b573b841e, type: 3}
+  m_oBulletObject: {fileID: 7891499629690027821, guid: d1fd8d0079ef50d4790e017b573b841e, type: 3}
   m_arrBulletSpawnPoints:
   - {fileID: 263713812844986241}
   - {fileID: 6167324715836670666}
   m_strAttackInputKey: Fire1
   m_fBulletDelayTime: 0.2
+  m_bIsPlayerInput: 1
