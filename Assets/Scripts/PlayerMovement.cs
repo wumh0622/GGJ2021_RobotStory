@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform body = null;
     [SerializeField]
+    private RobotSprite sprite = null;
+    [SerializeField]
     private Transform rightSensor = null;
     [SerializeField]
     private Transform leftSensor = null;
@@ -66,5 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
         transform.localPosition = transform.localPosition + translation;
         body.localEulerAngles = new Vector3(0f, 0f, degree);
+        sprite.SetDirection(degree);
     }
 }
