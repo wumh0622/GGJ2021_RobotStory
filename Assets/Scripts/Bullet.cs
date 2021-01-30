@@ -50,7 +50,6 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.name);
         if (m_eOwnerType == EBulletOwnerType.m_ePlayer)
         {
             if (collision.gameObject == GameManager.Instance.GetPlayer().gameObject)
@@ -77,8 +76,6 @@ public class Bullet : MonoBehaviour
                 return;
             }
         }
-
-
 
         DestoryBullet();
     }
