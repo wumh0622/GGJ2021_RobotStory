@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerSystem : MonoBehaviour
 {
-    public enum SystemId { MOVEMENT, INPUT }
+    public enum SystemId { MOVEMENT, INPUT, VISION }
 
     [SerializeField]
     private PlayerMovement movement = null;
     [SerializeField]
     private PlayerInput input = null;
+    [SerializeField]
+    private PlayerVision vision = null;
 
     [Header("Default Values")]
     [SerializeField]
@@ -42,6 +44,9 @@ public class PlayerSystem : MonoBehaviour
                     break;
                 case SystemId.INPUT:
                     systemLevels.Add(inputDelayFrames.Length - 1);
+                    break;
+                case SystemId.VISION:
+                    systemLevels.Add(vision.GetVisionCount() - 1);
                     break;
             }
         }
@@ -77,6 +82,10 @@ public class PlayerSystem : MonoBehaviour
                 case SystemId.INPUT:
                     input.InputDelayFrame = inputDelayFrames[systemLevel];
                     Debug.LogFormat("輸入延遲 => {0}", input.InputDelayFrame);
+                    break;
+                case SystemId.VISION:
+                    vision.SetVisionMode(systemLevel);
+                    Debug.LogFormat("顯示範圍 => Level {0}", vision.GetVisionMode());
                     break;
             }
         }
