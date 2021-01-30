@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,17 @@ public class GameManager : MonoBehaviour
         {
             player.Damaged();
         }
+
+        // 直接跳回標題
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void DamagePlayer()
+    {
+        player.Damaged();
     }
 
     public void ChangeRoomFrom(RoomDoor door)
