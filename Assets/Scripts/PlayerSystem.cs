@@ -54,6 +54,24 @@ public class PlayerSystem : MonoBehaviour
         RefreshSystemValues();
     }
 
+    public bool IsAllSystemBroken()
+    {
+        int total = 0;
+        for (int i = 0; i < systemLevels.Count; i++)
+        {
+            total += systemLevels[i];
+        }
+
+        if (total > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void Damaged()
     {
         Debug.Log("受傷了");

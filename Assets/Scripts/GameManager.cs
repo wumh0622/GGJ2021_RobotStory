@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         }
 
         //啟動第一個房間
-        if(rooms.Count > 0)
+        if (rooms.Count > 0)
         {
             rooms[0].RoomStart();
         }
@@ -44,15 +44,14 @@ public class GameManager : MonoBehaviour
         return player;
     }
 
-    // 測試用
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (player.IsAllSystemBroken())
         {
-            player.Damaged();
+            SceneManager.LoadScene(2);
         }
 
-        // 直接跳回標題
+        // 測試用，直接跳回標題
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
