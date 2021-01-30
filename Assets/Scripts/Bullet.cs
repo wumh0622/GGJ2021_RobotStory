@@ -74,7 +74,6 @@ public class Bullet : MonoBehaviour
             {
                 //Damage Player
                 GameManager.Instance.DamagePlayer();
-                return;
             }
         }
 

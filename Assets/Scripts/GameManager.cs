@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
             rooms[i].DoorRight.NextDoor = rooms[i + 1].DoorLeft;
             rooms[i + 1].DoorLeft.NextDoor = rooms[i].DoorRight;
         }
+
+        //啟動第一個房間
+        if(rooms.Count > 0)
+        {
+            rooms[0].RoomStart();
+        }
     }
 
     public PlayerSystem GetPlayer()
@@ -82,5 +88,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = door.NextDoor.transform.position;
         // 然後切換攝影機到下一個房間的位置
         gameCamera.MoveTo(door.NextDoor.BelongRoom.transform.position);
+        //啟動房間
+        door.NextDoor.BelongRoom.RoomStart();
     }
 }

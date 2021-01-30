@@ -30,10 +30,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_fHP = m_fMaxHp;
         m_oPlayer = GameManager.Instance.GetPlayer().gameObject;
         m_oRB2D = GetComponent<Rigidbody2D>();
         m_oBarrageSystem = GetComponent<BarrageSystem>();
-        ActivateEnemy(true);
+        //ActivateEnemy(true);
     }
 
     // Update is called once per frame
@@ -77,7 +78,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void ActivateEnemy(bool bActivate)
+    public void ActivateEnemy(bool bActivate)
     {
         m_bActivateAI = bActivate;
     }
