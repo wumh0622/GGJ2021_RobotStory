@@ -15,6 +15,9 @@ public class PlayerSystem : MonoBehaviour
 
     [Header("Default Values")]
     [SerializeField]
+    [Range(1, 100)]
+    private int systemDamageRate = 30;
+    [SerializeField]
     private float defaultSpeed = 5f;
     [SerializeField]
     [Tooltip("行動速度(%)")]
@@ -78,19 +81,17 @@ public class PlayerSystem : MonoBehaviour
 
     public void Damaged()
     {
-        Debug.Log("受傷了");
-        if(m_bNoDamage)
+        if (random.Next(1, 100) < systemDamageRate)
         {
-            return;
+            Debug.Log("受傷了");
+            int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
+            if (systemLevels[indexOfSystemId] > 0)
+            {
+                systemLevels[indexOfSystemId]--;
+            }
+            RefreshSystemValues();
         }
-        int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
-        if (systemLevels[indexOfSystemId] > 0)
-        {
-            systemLevels[indexOfSystemId]--;
-        }
-        RefreshSystemValues();
     }
-
     public void Heal()
     {
         Debug.Log("補血");
