@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7776249978432857597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1254998363632782630, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 251d89d5f16c67d48b06731f8c6a78e1, type: 3}
+    - target: {fileID: 1322307536358793161, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d78829212ac56c049930666a7066727b, type: 3}
+    - target: {fileID: 3018761619605906393, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eeba209c25b8cdd40a1be1ca671152ed, type: 3}
+    - target: {fileID: 5219306793604153319, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f119f4ada6268e499ac4aead742bc03, type: 3}
+    - target: {fileID: 5820783054471964083, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 47b3e6f1c7227dc48a2157510d397526, type: 3}
+    - target: {fileID: 6855715044265458774, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855715044265458774, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855715044265458774, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855715044265458774, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150061957508648550, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Name
+      value: PlayerHUD_Damage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
