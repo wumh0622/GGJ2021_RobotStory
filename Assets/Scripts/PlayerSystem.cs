@@ -92,15 +92,18 @@ public class PlayerSystem : MonoBehaviour
 
     public void Damaged()
     {
-        if (random.Next(1, 100) < systemDamageRate)
+        if (!m_bNoDamage)
         {
-            Debug.Log("受傷了");
-            int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
-            if (systemLevels[indexOfSystemId] > 0)
+            if (random.Next(1, 100) < systemDamageRate)
             {
-                systemLevels[indexOfSystemId]--;
+                Debug.Log("受傷了");
+                int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
+                if (systemLevels[indexOfSystemId] > 0)
+                {
+                    systemLevels[indexOfSystemId]--;
+                }
+                RefreshSystemValues();
             }
-            RefreshSystemValues();
         }
     }
     public void Heal()

@@ -92,6 +92,11 @@ public class Enemy : MonoBehaviour , IRoomObject
         }
     }
 
+    public void AddForceToEnemy(Vector2 oForce)
+    {
+        m_oRB2D.AddForce(oForce);
+    }
+
     public void ActivateObject(bool bActivate)
     {
         m_bActivate = bActivate;

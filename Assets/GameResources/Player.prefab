@@ -695,6 +695,7 @@ MonoBehaviour:
   - 0.66
   - 1
   inputDelayFrames: 320000001900000000000000
+  m_bNoDamage: 0
 --- !u!114 &4367929177518684147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,5 +764,8 @@ MonoBehaviour:
   - {fileID: 3943222155738866197}
   m_strAttackInputKey: Fire1
   m_fBulletDelayTime: 0.05
-  m_fDamage: 20
+  m_nBulletAmountInOneShot: 1
+  m_fOneShotInterval: 0.01
+  m_fDamage: 25
   m_bIsPlayerInput: 1
+  m_fBulletSpeed: 10
