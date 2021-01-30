@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameCamera gameCamera = null;
     [SerializeField]
-    private Player player = null;
+    private PlayerSystem player = null;
     [SerializeField]
     private List<Room> rooms = new List<Room>();
 
@@ -29,6 +29,20 @@ public class GameManager : MonoBehaviour
         {
             rooms[i].DoorRight.NextDoor = rooms[i + 1].DoorLeft;
             rooms[i + 1].DoorLeft.NextDoor = rooms[i].DoorRight;
+        }
+    }
+
+    public PlayerSystem GetPlayer()
+    {
+        return player;
+    }
+
+    // 測試用
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            player.Damaged();
         }
     }
 
@@ -56,10 +70,5 @@ public class GameManager : MonoBehaviour
         player.transform.position = door.NextDoor.transform.position;
         // 然後切換攝影機到下一個房間的位置
         gameCamera.MoveTo(door.NextDoor.BelongRoom.transform.position);
-    }
-
-    public Player GetPlayer()
-    {
-        return player;
     }
 }

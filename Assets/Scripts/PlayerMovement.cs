@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float defaultSpeed = 5.0f;
+    public float Speed = 5.0f;
+
     [SerializeField]
     private Transform body = null;
     [SerializeField]
@@ -16,13 +16,6 @@ public class Player : MonoBehaviour
     private Transform downSensor = null;
     [SerializeField]
     private float sensorRadius = 0.02f;
-
-    private float speed;
-
-    private void Start()
-    {
-        speed = defaultSpeed;
-    }
 
     private void Update()
     {
@@ -38,7 +31,7 @@ public class Player : MonoBehaviour
 
         float degree = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         Vector2 direction = new Vector2(1f, 0f).Rotate(degree);
-        Vector3 translation = new Vector3(direction.x, direction.y, 0f) * speed * Time.deltaTime;
+        Vector3 translation = new Vector3(direction.x, direction.y, 0f) * Speed * Time.deltaTime;
 
         if (translation.x > 0f)
         {
