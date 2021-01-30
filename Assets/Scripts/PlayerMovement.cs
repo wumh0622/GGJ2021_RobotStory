@@ -17,12 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float sensorRadius = 0.02f;
 
-    private void Update()
-    {
-        Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }
-
-    private void Move(float x, float y)
+    public void Move(float x, float y)
     {
         if (Mathf.Approximately(x, 0f) && Mathf.Approximately(y, 0f))
         {
