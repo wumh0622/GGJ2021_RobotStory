@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1214818850}
   - component: {fileID: 1214818853}
   - component: {fileID: 1214818851}
+  - component: {fileID: 4738587907159248350}
   m_Layer: 0
   m_Name: enemy_AI_1
   m_TagString: Untagged
@@ -95,6 +96,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2527227e3fe6794cab7fa380b613faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4738587907159248350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214818849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ad0267deeffbb42b783e12f4a013d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1214818853}
+  front: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  back: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  left: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  right: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  leftFront: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  rightBack: {fileID: 21300000, guid: bf983af0f959ec54aae3db5a2834342d, type: 3}
+  flashTime: 0.1
+  special: {fileID: 0}
+  flip: 1
 --- !u!1 &3596766359781202841
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,16 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aadf6419cc0ade488a37e242c466db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oBulletObject: {fileID: 5684554141723533683, guid: 56bc42f754690b54396e5325dd33d091, type: 3}
-  m_arrBulletSpawnPoints:
-  - {fileID: 3596766360676487451}
   m_strAttackInputKey: Fire1
-  m_fBulletDelayTime: 2
-  m_nBulletAmountInOneShot: 1
-  m_fOneShotInterval: 0.1
-  m_fDamage: 1
   m_bIsPlayerInput: 0
-  m_fBulletSpeed: 3
+  m_arrBarrageInfos:
+  - m_oBulletObject: {fileID: 5684554141723533683, guid: 56bc42f754690b54396e5325dd33d091, type: 3}
+    m_arrBulletSpawnPoints:
+    - {fileID: 3596766360676487451}
+    m_fBulletDelayTime: 1
+    m_nBulletAmountInOneShot: 1
+    m_fOneShotInterval: 0
+    m_fDamage: 0
+    m_fBulletSpeed: 3
 --- !u!61 &6590035469520772764
 BoxCollider2D:
   m_ObjectHideFlags: 0

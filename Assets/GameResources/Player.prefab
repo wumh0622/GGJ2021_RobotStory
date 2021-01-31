@@ -99,9 +99,12 @@ MonoBehaviour:
   front: {fileID: 21300000, guid: 7456675cc83482e45b560db10f394f03, type: 3}
   back: {fileID: 21300000, guid: d1867ab4a7222a944b49e272d3e30405, type: 3}
   left: {fileID: 21300000, guid: b0e2d1f810edc1b4ba2bd739f7c23368, type: 3}
+  right: {fileID: 0}
   leftFront: {fileID: 21300000, guid: b7b16b4f6893f4a45a0ecf454b0cca3b, type: 3}
   rightBack: {fileID: 21300000, guid: a2d9f35e5b7a23d4faff54f5a4495e7a, type: 3}
   flashTime: 0.1
+  special: {fileID: 0}
+  flip: 1
 --- !u!1 &881996911983734988
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,14 +763,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aadf6419cc0ade488a37e242c466db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oBulletObject: {fileID: 7891499629690027821, guid: d1fd8d0079ef50d4790e017b573b841e, type: 3}
-  m_arrBulletSpawnPoints:
-  - {fileID: 6937095739515762391}
-  - {fileID: 3943222155738866197}
   m_strAttackInputKey: Fire1
-  m_fBulletDelayTime: 0.05
-  m_nBulletAmountInOneShot: 1
-  m_fOneShotInterval: 0.01
-  m_fDamage: 25
   m_bIsPlayerInput: 1
-  m_fBulletSpeed: 10
+  m_arrBarrageInfos:
+  - m_oBulletObject: {fileID: 4629891200685249781, guid: 71c212ee9ab43ba4daaf9d257922b772, type: 3}
+    m_arrBulletSpawnPoints:
+    - {fileID: 6937095739515762391}
+    - {fileID: 3943222155738866197}
+    m_fBulletDelayTime: 0.1
+    m_nBulletAmountInOneShot: 1
+    m_fOneShotInterval: 0
+    m_fDamage: 25
+    m_fBulletSpeed: 10

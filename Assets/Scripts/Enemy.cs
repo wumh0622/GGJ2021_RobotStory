@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour , IRoomObject
 
     BarrageSystem m_oBarrageSystem;
 
+    RobotSprite m_oRobotSprite;
+
     public bool m_bActivate { get ; set; }
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour , IRoomObject
         m_oPlayer = GameManager.Instance.GetPlayer().gameObject;
         m_oMoveRB2D = GetComponent<Rigidbody2D>();
         m_oBarrageSystem = GetComponent<BarrageSystem>();
+        m_oRobotSprite = GetComponentInChildren<RobotSprite>();
         //ActivateEnemy(true);
     }
 
@@ -93,7 +96,8 @@ public class Enemy : MonoBehaviour , IRoomObject
     public void TakeDamage(float fDamage)
     {
         m_fHP -= fDamage;
-        if(m_fHP <= 0.0f)
+        m_oRobotSprite.Flash();
+        if (m_fHP <= 0.0f)
         {
             Destroy(gameObject);
         }

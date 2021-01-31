@@ -2,25 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class BarrageSystem : MonoBehaviour
 {
-    public Bullet m_oBulletObject;
+    [System.Serializable]
+    public class SBarrageInfo
+    {
+        public Bullet m_oBulletObject;
 
-    public Transform[] m_arrBulletSpawnPoints;
+        public Transform[] m_arrBulletSpawnPoints;
+
+        public float m_fBulletDelayTime;
+
+        public int m_nBulletAmountInOneShot;
+
+        public float m_fOneShotInterval;
+
+        public float m_fDamage;
+
+        public float m_fBulletSpeed;
+    }
+
 
     public string m_strAttackInputKey = "Fire1";
 
-    public float m_fBulletDelayTime = 0.5f;
-
-    public int m_nBulletAmountInOneShot = 1;
-
-    public float m_fOneShotInterval = 0.1f;
-
-    public float m_fDamage = 1.0f;
-
     public bool m_bIsPlayerInput = false;
 
-    public float m_fBulletSpeed = 1.0f;
+    public SBarrageInfo[] m_arrBarrageInfos;
+
+    SBarrageInfo m_oCurrentInfos;
 
     bool m_bActivate = false;
 
@@ -35,7 +46,11 @@ public class BarrageSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_fFireTimer = m_fBulletDelayTime;
+        if(m_arrBarrageInfos.Length > 0)
+        {
+            m_oCurrentInfos = m_arrBarrageInfos[0];
+        }
+        m_fFireTimer = m_oCurrentInfos.m_fBulletDelayTime;
         ActivateSystem(true);
     }
 
@@ -67,10 +82,10 @@ public class BarrageSystem : MonoBehaviour
 
             if(bShoot)
             {
-                if (m_fFireTimer >= m_fBulletDelayTime && !m_bStartShoot)
+                if (m_fFireTimer >= m_oCurrentInfos.m_fBulletDelayTime && !m_bStartShoot)
                 {
                     m_bStartShoot = true;
-                    InvokeRepeating("SpawnBullet", 0.0f, m_fOneShotInterval);
+                    InvokeRepeating("SpawnBullet", 0.0f, m_oCurrentInfos.m_fOneShotInterval);
                     m_fFireTimer = 0.0f;
                 }
                 if (!m_bStartShoot)
@@ -80,7 +95,7 @@ public class BarrageSystem : MonoBehaviour
             }
             else
             {
-                m_fFireTimer = m_fBulletDelayTime;
+                m_fFireTimer = m_oCurrentInfos.m_fBulletDelayTime;
             }
         }
     }
@@ -97,11 +112,11 @@ public class BarrageSystem : MonoBehaviour
 
     void SpawnBullet()
     {
-        for (int nIdx = 0; nIdx < m_arrBulletSpawnPoints.Length; nIdx++)
+        for (int nIdx = 0; nIdx < m_oCurrentInfos.m_arrBulletSpawnPoints.Length; nIdx++)
         {
-            Bullet oBullet = Instantiate(m_oBulletObject);
-            oBullet.transform.position = m_arrBulletSpawnPoints[nIdx].position;
-            oBullet.transform.rotation = m_arrBulletSpawnPoints[nIdx].rotation;
+            Bullet oBullet = Instantiate(m_oCurrentInfos.m_oBulletObject);
+            oBullet.transform.position = m_oCurrentInfos.m_arrBulletSpawnPoints[nIdx].position;
+            oBullet.transform.rotation = m_oCurrentInfos.m_arrBulletSpawnPoints[nIdx].rotation;
             if (m_bIsPlayerInput)
             {
                 oBullet.SetOwner(gameObject, EBulletOwnerType.m_ePlayer);
@@ -111,15 +126,39 @@ public class BarrageSystem : MonoBehaviour
                 oBullet.SetOwner(gameObject, EBulletOwnerType.m_eEnemy);
             }
 
-            oBullet.SetDamage(m_fDamage);
-            oBullet.SetSpeed(m_fBulletSpeed);
+            oBullet.SetDamage(m_oCurrentInfos.m_fDamage);
+            oBullet.SetSpeed(m_oCurrentInfos.m_fBulletSpeed);
         }
         m_nBulletAmountTemp++;
-        if(m_nBulletAmountTemp == m_nBulletAmountInOneShot)
+        if(m_nBulletAmountTemp == m_oCurrentInfos.m_nBulletAmountInOneShot)
         {
             m_bStartShoot = false;
             m_nBulletAmountTemp = 0;
             CancelInvoke("SpawnBullet");
+        }
+    }
+
+    public void ChangeBarrageState(int nState, float fTime)
+    {
+        if(m_arrBarrageInfos.Length > nState)
+        {
+            m_bStartShoot = false;
+            m_nBulletAmountTemp = 0;
+            CancelInvoke("SpawnBullet");
+
+            m_oCurrentInfos = m_arrBarrageInfos[nState];
+            Invoke("ResetBarrageState", fTime);
+        }
+    }
+
+    void ResetBarrageState()
+    {
+        if (m_arrBarrageInfos.Length > 0)
+        {
+            m_bStartShoot = false;
+            m_nBulletAmountTemp = 0;
+            CancelInvoke("SpawnBullet");
+            m_oCurrentInfos = m_arrBarrageInfos[0];
         }
     }
 }

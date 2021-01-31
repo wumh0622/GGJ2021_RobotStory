@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 6596399487778958837}
   - component: {fileID: 8057767924453662618}
   - component: {fileID: 516918456602942291}
+  - component: {fileID: 7598885942650528181}
   m_Layer: 0
   m_Name: enemy_AI_3
   m_TagString: Untagged
@@ -125,6 +126,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2527227e3fe6794cab7fa380b613faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7598885942650528181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823934926711070089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ad0267deeffbb42b783e12f4a013d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8057767924453662618}
+  front: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  back: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  left: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  right: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  leftFront: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  rightBack: {fileID: 21300000, guid: 592864ed5a0745d45b32ec16ef7af341, type: 3}
+  flashTime: 0.1
+  special: {fileID: 0}
+  flip: 1
 --- !u!1 &3596766359781202841
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,13 +250,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aadf6419cc0ade488a37e242c466db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oBulletObject: {fileID: 5684554141723533683, guid: 56bc42f754690b54396e5325dd33d091, type: 3}
-  m_arrBulletSpawnPoints:
-  - {fileID: 7654763535249136510}
   m_strAttackInputKey: Fire1
-  m_fBulletDelayTime: 1
-  m_nBulletAmountInOneShot: 1
-  m_fOneShotInterval: 0.1
-  m_fDamage: 1
   m_bIsPlayerInput: 0
-  m_fBulletSpeed: 5
+  m_arrBarrageInfos:
+  - m_oBulletObject: {fileID: 7891499629690027821, guid: d1fd8d0079ef50d4790e017b573b841e, type: 3}
+    m_arrBulletSpawnPoints:
+    - {fileID: 7654763535249136510}
+    m_fBulletDelayTime: 0.8
+    m_nBulletAmountInOneShot: 2
+    m_fOneShotInterval: 0.2
+    m_fDamage: 0
+    m_fBulletSpeed: 9
