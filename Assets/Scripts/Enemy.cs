@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour , IRoomObject
 
     GameObject m_oPlayer;
 
-    Rigidbody2D m_oRB2D;
+    Rigidbody2D m_oMoveRB2D;
 
     BarrageSystem m_oBarrageSystem;
 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour , IRoomObject
     {
         m_fHP = m_fMaxHp;
         m_oPlayer = GameManager.Instance.GetPlayer().gameObject;
-        m_oRB2D = GetComponent<Rigidbody2D>();
+        m_oMoveRB2D = GetComponent<Rigidbody2D>();
         m_oBarrageSystem = GetComponent<BarrageSystem>();
         //ActivateEnemy(true);
     }
@@ -49,7 +49,9 @@ public class Enemy : MonoBehaviour , IRoomObject
 
             if(Mathf.Abs(m_fVelocityForward) > 0.1f)
             {
-                m_oRB2D.AddTorque(m_fVelocityForward * -1 * m_fRotSpeed);
+
+                  m_oMoveRB2D.AddTorque(m_fVelocityForward * -1 * m_fRotSpeed);
+
             }
             else
             {
@@ -59,7 +61,7 @@ public class Enemy : MonoBehaviour , IRoomObject
             float fDistance = Vector3.Distance(m_oPlayer.transform.position, transform.position);
             if(fDistance > m_fStopDistance)
             {
-                m_oRB2D.AddForce(transform.right * m_fSpeed);
+                m_oMoveRB2D.AddForce(transform.right * m_fSpeed);
             }
             else
             {
@@ -94,7 +96,7 @@ public class Enemy : MonoBehaviour , IRoomObject
 
     public void AddForceToEnemy(Vector2 oForce)
     {
-        m_oRB2D.AddForce(oForce);
+        m_oMoveRB2D.AddForce(oForce);
     }
 
     public void ActivateObject(bool bActivate)
