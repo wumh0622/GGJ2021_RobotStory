@@ -11,6 +11,33 @@ public class Room : MonoBehaviour
 
     private void Awake()
     {
+        CheckRoomObjectIsDead();
+        if(m_listAllObjectInRoom.Count > 0)
+        {
+            IsLocked = true;
+        }
+    }
+
+    private void Update()
+    {
+        CheckRoomObjectIsDead();
+        if (m_listAllObjectInRoom.Count == 0)
+        {
+            IsLocked = false;
+        }
+    }
+
+    public void RoomStart()
+    {
+        foreach (var oObject in m_listAllObjectInRoom)
+        {
+            oObject.ActivateObject(true);
+        }
+    }
+
+    public void CheckRoomObjectIsDead()
+    {
+        m_listAllObjectInRoom.Clear();
         Enemy[] arrAllEnemy = GetComponentsInChildren<Enemy>();
         EnemySpawner[] arrAllSpawner = GetComponentsInChildren<EnemySpawner>();
 
@@ -24,14 +51,6 @@ public class Room : MonoBehaviour
         {
             var oObject = arrAllSpawner[nIdx] as IRoomObject;
             m_listAllObjectInRoom.Add(oObject);
-        }
-    }
-
-    public void RoomStart()
-    {
-        foreach (var oObject in m_listAllObjectInRoom)
-        {
-            oObject.ActivateObject(true);
         }
     }
 }

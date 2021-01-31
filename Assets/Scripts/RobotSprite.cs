@@ -11,12 +11,23 @@ public class RobotSprite : MonoBehaviour
     [SerializeField]
     private Sprite left = null;
     [SerializeField]
+    private Sprite right = null;
+    [SerializeField]
     private Sprite leftFront = null;
     [SerializeField]
     private Sprite rightBack = null;
 
+    [SerializeField]
+    private Sprite special = null;
+
+    bool bSpecial = false;
+
     public void SetDirection(float degree)
     {
+        if(bSpecial)
+        {
+            return;
+        }
         if (degree < 0)
         {
             degree += 360f;
@@ -26,8 +37,16 @@ public class RobotSprite : MonoBehaviour
         switch (sector)
         {
             case 0:
-                spriteRenderer.sprite = left;
-                spriteRenderer.flipX = true;
+                if(right)
+                {
+                    spriteRenderer.sprite = right;
+                    spriteRenderer.flipX = false;
+                }
+                else
+                {
+                    spriteRenderer.sprite = left;
+                    spriteRenderer.flipX = true;
+                }
                 break;
             case 1:
                 spriteRenderer.sprite = rightBack;
@@ -58,5 +77,16 @@ public class RobotSprite : MonoBehaviour
                 spriteRenderer.flipX = true;
                 break;
         }
+    }
+
+    public void SpecialSprite(float fTime)
+    {
+        spriteRenderer.sprite = special;
+        Invoke("SpecialEnd", fTime);
+    }
+
+    void SpecialEnd()
+    {
+        bSpecial = false;
     }
 }
