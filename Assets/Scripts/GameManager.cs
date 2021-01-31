@@ -83,7 +83,14 @@ public class GameManager : MonoBehaviour
                 {
                     itemPanel.SetItem(item);
                     itemPanel.gameObject.SetActive(true);
-                    SetGamePause(true);
+                    if(!item.bGameover)
+                    {
+                        SetGamePause(true);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(3);
+                    }
                 }
             }
         }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78fdaa9b463c004b94a4796e41417cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 216cb00e2168ac5479897f40a99c316d, type: 3}
+  Sprite: {fileID: 21300000, guid: 10f87494498945a4295e653689233455, type: 3}
   ItemName: "\u53CD\u6297\u8ECD\u8EAB\u5206\u8B49"
   Description: "\u5370\u6709\u53CD\u6297\u8ECD\u6A19\u8A8C\u7684\u8EAB\u5206\u8B49\uFF0C\u5BEB\u8457\u5927\u5927\u7684\u9769\u547D\u4E8C\u5B57\u3002"
 --- !u!50 &-2101155792824642180
