@@ -70,4 +70,16 @@ public class PlayerMovement : MonoBehaviour
         body.localEulerAngles = new Vector3(0f, 0f, degree);
         sprite.SetDirection(degree);
     }
+
+    public void Rotate(float x, float y)
+    {
+        if (Mathf.Approximately(x, 0f) && Mathf.Approximately(y, 0f))
+        {
+            return;
+        }
+
+        float degree = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        body.localEulerAngles = new Vector3(0f, 0f, degree);
+        sprite.SetDirection(degree);
+    }
 }
