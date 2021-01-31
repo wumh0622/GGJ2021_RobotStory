@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerSystem player = null;
     [SerializeField]
+    private ItemPanel itemPanel = null;
+    [SerializeField]
     private List<Room> rooms = new List<Room>();
 
     public static GameManager Instance;
