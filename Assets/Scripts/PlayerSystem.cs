@@ -14,6 +14,8 @@ public class PlayerSystem : MonoBehaviour
     private PlayerInput input = null;
     [SerializeField]
     private PlayerVision vision = null;
+    [SerializeField]
+    private RobotSprite sprite = null;
 
     [Header("Default Values")]
     [SerializeField]
@@ -96,9 +98,10 @@ public class PlayerSystem : MonoBehaviour
     {
         if (!m_bNoDamage)
         {
+            sprite.Flash();
+
             if (random.Next(1, 100) < systemDamageRate)
             {
-                Debug.Log("受傷了");
                 int indexOfSystemId = MathUtility.RandomWithWeights(random, systemLevels);
                 if (systemLevels[indexOfSystemId] > 0)
                 {

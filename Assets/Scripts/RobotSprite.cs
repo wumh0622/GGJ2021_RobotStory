@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class RobotSprite : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class RobotSprite : MonoBehaviour
     private Sprite leftFront = null;
     [SerializeField]
     private Sprite rightBack = null;
+    [SerializeField]
+    private float flashTime = 0.1f;
 
     public void SetDirection(float degree)
     {
@@ -58,5 +61,33 @@ public class RobotSprite : MonoBehaviour
                 spriteRenderer.flipX = true;
                 break;
         }
+    }
+
+    public void Flash()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlashProcess());
+    }
+
+    private IEnumerator FlashProcess()
+    {
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / flashTime;
+            spriteRenderer.color = Color.Lerp(Color.white, Color.red, t);
+            yield return null;
+        }
+
+        t = 1f;
+
+        while (t > 0f)
+        {
+            t -= Time.deltaTime / flashTime;
+            spriteRenderer.color = Color.Lerp(Color.white, Color.red, t);
+            yield return null;
+        }
+
+        spriteRenderer.color = Color.white;
     }
 }
