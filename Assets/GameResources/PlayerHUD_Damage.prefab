@@ -59,6 +59,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7789599598672317229, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.023584902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789599598672317229, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.14973411
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789599598672317229, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9150061957508648550, guid: e6e5ca8a789da674aa204fbd0dcf04f6, type: 3}
       propertyPath: m_Name
       value: PlayerHUD_Damage
