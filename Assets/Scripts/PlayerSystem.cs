@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SystemId { MOVEMENT, INPUT, VISION }
+
 public class PlayerSystem : MonoBehaviour
 {
-    public enum SystemId { MOVEMENT, INPUT, VISION }
+    public event Action<SystemId> OnDamaged;
 
     [SerializeField]
     private PlayerMovement movement = null;
@@ -103,6 +105,7 @@ public class PlayerSystem : MonoBehaviour
                     systemLevels[indexOfSystemId]--;
                 }
                 RefreshSystemValues();
+                OnDamaged?.Invoke((SystemId)indexOfSystemId);
             }
         }
     }
