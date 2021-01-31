@@ -292,7 +292,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: bd87e7a3ddedda048bb0926ae22fefcd, type: 3}
     m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
@@ -508,5 +508,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4216470a1bc03804e8358962a302f88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   systemDamageText: {fileID: 7789599598672317229}
