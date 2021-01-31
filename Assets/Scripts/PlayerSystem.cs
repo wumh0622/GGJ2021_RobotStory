@@ -9,6 +9,9 @@ public class PlayerSystem : MonoBehaviour
     public event Action<SystemId> OnDamaged;
 
     [SerializeField]
+    private float ultimateTime = 0.5f;
+
+    [SerializeField]
     private PlayerMovement movement = null;
     [SerializeField]
     private PlayerInput input = null;
@@ -37,6 +40,8 @@ public class PlayerSystem : MonoBehaviour
     [SerializeField]
     private bool m_bNoDamage = false;
 
+    private float remainUltimateTime = 0f;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -63,6 +68,19 @@ public class PlayerSystem : MonoBehaviour
         }
 
         RefreshSystemValues();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
+        if (remainUltimateTime > 0f)
+        {
+            remainUltimateTime -= Time.deltaTime;
+        }
     }
 
     public int GetRemainSystemLevel()
@@ -98,6 +116,12 @@ public class PlayerSystem : MonoBehaviour
     {
         if (!m_bNoDamage)
         {
+            // 受傷後的無敵時間
+            if (remainUltimateTime > 0f)
+            {
+                return;
+            }
+
             sprite.Flash();
 
             if (random.Next(1, 100) < systemDamageRate)
@@ -110,6 +134,8 @@ public class PlayerSystem : MonoBehaviour
                 RefreshSystemValues();
                 OnDamaged?.Invoke((SystemId)indexOfSystemId);
             }
+
+            remainUltimateTime = ultimateTime;
         }
     }
     public void Heal()
