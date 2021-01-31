@@ -43,7 +43,8 @@ public class EnemySpawner : MonoBehaviour, IRoomObject
                 for (int nTime = 0; nTime < m_nSpawnCount; nTime++)
                 {
                     Enemy oEnemy = Instantiate<Enemy>(m_oSpawnObject);
-                    if(m_fSpawnRange != 0)
+                    oEnemy.transform.parent = gameObject.transform.parent.transform;
+                    if (m_fSpawnRange != 0)
                     {
                         oEnemy.transform.position = Random.insideUnitSphere * m_fSpawnRange + transform.position;
                     }
@@ -53,6 +54,7 @@ public class EnemySpawner : MonoBehaviour, IRoomObject
                     }
                     var oEnemyInterface = oEnemy as IRoomObject;
                     oEnemyInterface.ActivateObject(true);
+                    
                 }
 
                 if (m_nSpawnTime > 0)

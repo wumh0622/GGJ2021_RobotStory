@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348273, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_nSpawnCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348273, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_fSpawnCDTime
@@ -128,11 +128,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348272, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.86
+      value: -6.74
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348272, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.29
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348272, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -172,11 +172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348273, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_fSpawnRange
-      value: 1.28
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348273, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_nSpawnCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8210002475213348273, guid: bae139817555dac4698a0add29eac67a, type: 3}
       propertyPath: m_fSpawnCDTime

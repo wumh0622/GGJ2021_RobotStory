@@ -23,6 +23,9 @@ public class RobotSprite : MonoBehaviour
     [SerializeField]
     private Sprite special = null;
 
+    [SerializeField]
+    private bool flip = true;
+
     bool bSpecial = false;
 
     public void SetDirection(float degree)
@@ -61,7 +64,11 @@ public class RobotSprite : MonoBehaviour
                 break;
             case 3:
                 spriteRenderer.sprite = rightBack;
-                spriteRenderer.flipX = true;
+                if(flip)
+                {
+                    spriteRenderer.flipX = true;
+                }
+
                 break;
             case 4:
                 spriteRenderer.sprite = left;
@@ -77,7 +84,10 @@ public class RobotSprite : MonoBehaviour
                 break;
             case 7:
                 spriteRenderer.sprite = leftFront;
-                spriteRenderer.flipX = true;
+                if (flip)
+                {
+                    spriteRenderer.flipX = true;
+                }
                 break;
         }
     }

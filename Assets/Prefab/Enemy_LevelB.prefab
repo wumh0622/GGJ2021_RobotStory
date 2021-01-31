@@ -201,9 +201,9 @@ MonoBehaviour:
   m_arrBulletSpawnPoints:
   - {fileID: 3596766360676487451}
   m_strAttackInputKey: Fire1
-  m_fBulletDelayTime: 3
-  m_nBulletAmountInOneShot: 2
-  m_fOneShotInterval: 0.5
+  m_fBulletDelayTime: 5
+  m_nBulletAmountInOneShot: 30
+  m_fOneShotInterval: 0.05
   m_fDamage: 1
   m_bIsPlayerInput: 0
   m_fBulletSpeed: 4
