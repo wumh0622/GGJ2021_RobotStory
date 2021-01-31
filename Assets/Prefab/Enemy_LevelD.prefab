@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1974734f6a35942877746f9c0d76a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fMaxHp: 600
+  m_fMaxHp: 1000
   m_fSpeed: 18
   m_fRotSpeed: 80
   m_fAttackAngleRange: 0.7
@@ -344,7 +344,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.2, y: 0}
   serializedVersion: 2
-  m_Radius: 1.21
+  m_Radius: 1.86
 --- !u!114 &872020005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 4850241741872183191}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 5}
+  m_LocalScale: {x: 0.80917406, y: 0.80917406, z: 8.09174}
   m_Children: []
   m_Father: {fileID: 3596766359781202838}
   m_RootOrder: 2
