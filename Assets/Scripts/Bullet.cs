@@ -32,6 +32,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
         transform.Translate(Vector3.right * Time.deltaTime * m_fSpeed);
     }
 

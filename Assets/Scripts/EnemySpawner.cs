@@ -31,6 +31,11 @@ public class EnemySpawner : MonoBehaviour, IRoomObject
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
         if (m_bActivate)
         {
             if (m_fTimer >= m_fSpawnCDTime)

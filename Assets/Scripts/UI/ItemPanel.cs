@@ -16,4 +16,13 @@ public class ItemPanel : MonoBehaviour
         itemName.text = item.ItemName;
         description.text = item.Description;
     }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsPlayerPressDownFire())
+        {
+            GameManager.Instance.SetGamePause(false);
+            gameObject.SetActive(false);
+        }
+    }
 }

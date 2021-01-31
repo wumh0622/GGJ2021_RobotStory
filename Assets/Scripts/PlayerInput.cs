@@ -12,6 +12,11 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (InputDelayFrame == 0)
         {

@@ -40,7 +40,12 @@ public class Enemy : MonoBehaviour , IRoomObject
     // Update is called once per frame
     void Update()
     {
-        if(m_bActivate)
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
+        if (m_bActivate)
         {
             Vector2 forward = transform.up * -1;
             Vector2 toOther = (m_oPlayer.transform.position - transform.position).normalized;

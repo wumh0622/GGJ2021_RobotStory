@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    private bool isGamePause = false;
+    private Room currentRoom;
+
     private void Awake()
     {
         Instance = this;
@@ -38,12 +41,28 @@ public class GameManager : MonoBehaviour
         if (rooms.Count > 0)
         {
             rooms[0].RoomStart();
+            currentRoom = rooms[0];
         }
+    }
+
+    public bool IsPlayerPressDownFire()
+    {
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1");
     }
 
     public PlayerSystem GetPlayer()
     {
         return player;
+    }
+
+    public bool IsGamePause()
+    {
+        return isGamePause;
+    }
+
+    public void SetGamePause(bool value)
+    {
+        isGamePause = value;
     }
 
     private void Update()
@@ -53,10 +72,20 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        // 測試用，直接跳回標題
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // 房間解鎖後，才可以與道具互動
+        if (!currentRoom.IsLocked && IsPlayerPressDownFire())
         {
-            SceneManager.LoadScene(0);
+            var collider = Physics2D.OverlapCircle(player.transform.position, 0.4f, 1 << LayerMask.NameToLayer("Item"));
+            if (collider != null)
+            {
+                Item item = collider.GetComponent<Item>();
+                if (item != null)
+                {
+                    itemPanel.SetItem(item);
+                    itemPanel.gameObject.SetActive(true);
+                    SetGamePause(true);
+                }
+            }
         }
     }
 
@@ -88,8 +117,9 @@ public class GameManager : MonoBehaviour
         // 先把玩家移到下一個門的位置
         player.transform.position = door.NextDoor.transform.position;
         // 然後切換攝影機到下一個房間的位置
-        gameCamera.MoveTo(door.NextDoor.BelongRoom.transform.position);
+        currentRoom = door.NextDoor.BelongRoom;
+        gameCamera.MoveTo(currentRoom.transform.position);
         //啟動房間
-        door.NextDoor.BelongRoom.RoomStart();
+        currentRoom.RoomStart();
     }
 }

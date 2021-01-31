@@ -42,7 +42,12 @@ public class BarrageSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_bActivate)
+        if (GameManager.Instance.IsGamePause())
+        {
+            return;
+        }
+
+        if (m_bActivate)
         {
             bool bShoot = false;
             if(m_bIsPlayerInput)
