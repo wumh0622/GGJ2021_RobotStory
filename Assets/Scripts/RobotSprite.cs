@@ -95,6 +95,7 @@ public class RobotSprite : MonoBehaviour
     public void SpecialSprite(float fTime)
     {
         spriteRenderer.sprite = special;
+        bSpecial = true;
         Invoke("SpecialEnd", fTime);
     }
 

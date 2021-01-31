@@ -22,5 +22,6 @@ public class BossSkillHandle : MonoBehaviour
     void UseSkill()
     {
         m_obarrageSystem.ChangeBarrageState(1, 3.0f);
+        GetComponentInChildren<RobotSprite>().SpecialSprite(3.0f);
     }
 }
